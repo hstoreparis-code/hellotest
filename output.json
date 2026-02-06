@@ -1,0 +1,101 @@
+{
+  "spec": "JSONFIRST",
+  "version": "3.0",
+  "engine": "JSONFIRST",
+  "input": {
+    "raw_text": "Vous pouvez partager un article en cliquant sur les icônes de partage en haut à droite de celui-ci. \nLa reproduction totale ou partielle d’un article, sans l’autorisation écrite et ",
+    "cleaned_text": "Vous pouvez partager un article en cliquant sur les icônes de partage en haut à droite de celui-ci. La reproduction totale ou partielle d'un article, sans l'autorisation écrite est interdite.",
+    "language": "fr",
+    "autocorrect": {
+      "enabled": true,
+      "confidence": 0.85,
+      "corrections": [
+        {
+          "from": "sans l'autorisation écrite et",
+          "to": "sans l'autorisation écrite est interdite",
+          "type": "grammar"
+        }
+      ]
+    }
+  },
+  "jdons": [
+    {
+      "jdon_id": "jdon_001",
+      "confidence": 0.96,
+      "action": {
+        "raw": "partager",
+        "normalized": "share"
+      },
+      "object": {
+        "type": "article",
+        "category": "content"
+      },
+      "domain": {
+        "primary": "content management",
+        "secondary": "sharing"
+      },
+      "constraints": {
+        "method": "share icons",
+        "location": "top right"
+      }
+    },
+    {
+      "jdon_id": "jdon_002",
+      "confidence": 0.94,
+      "action": {
+        "raw": "reproduire",
+        "normalized": "reproduce"
+      },
+      "object": {
+        "type": "article",
+        "category": "content"
+      },
+      "domain": {
+        "primary": "copyright",
+        "secondary": "intellectual property"
+      },
+      "constraints": {
+        "scope": [
+          "total",
+          "partial"
+        ],
+        "requirement": "written authorization",
+        "status": "prohibited"
+      }
+    }
+  ],
+  "tokens": {
+    "raw": [
+      "partager",
+      "article",
+      "cliquant",
+      "icônes",
+      "partage",
+      "haut",
+      "droite",
+      "reproduction",
+      "totale",
+      "partielle",
+      "autorisation",
+      "écrite"
+    ],
+    "normalized": {
+      "partager": "share",
+      "article": "article",
+      "icônes": "icons",
+      "reproduction": "reproduction",
+      "autorisation": "authorization"
+    }
+  },
+  "execution": {
+    "parsable": true,
+    "executable": false,
+    "mode": "informational",
+    "on_success": "display_message",
+    "on_error": "jdon_validator"
+  },
+  "output": {
+    "format": "json",
+    "emit_events": true
+  }
+}
