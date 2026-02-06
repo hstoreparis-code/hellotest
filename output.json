@@ -3,32 +3,22 @@
   "version": "3.0",
   "engine": "JSONFIRST",
   "input": {
-    "raw_text": "Quel est ton verdit ? cela fonctionne correctement ? est ce que une intention peut etre pousser sur n'imorte quel compte github?",
-    "cleaned_text": "Quel est ton verdict ? Cela fonctionne correctement ? Est-ce qu'une intention peut être poussée sur n'importe quel compte GitHub ?",
+    "raw_text": "dobne moi ca",
+    "cleaned_text": "donne-moi ça",
     "language": "fr",
     "autocorrect": {
       "enabled": true,
-      "confidence": 0.94,
+      "confidence": 0.95,
       "corrections": [
         {
-          "from": "verdit",
-          "to": "verdict",
+          "from": "dobne",
+          "to": "donne",
+          "type": "typo"
+        },
+        {
+          "from": "ca",
+          "to": "ça",
           "type": "spelling"
-        },
-        {
-          "from": "etre pousser",
-          "to": "être poussée",
-          "type": "grammar"
-        },
-        {
-          "from": "n'imorte",
-          "to": "n'importe",
-          "type": "spelling"
-        },
-        {
-          "from": "github",
-          "to": "GitHub",
-          "type": "punctuation"
         }
       ]
     }
@@ -36,74 +26,35 @@
   "jdons": [
     {
       "jdon_id": "jdon_001",
-      "confidence": 0.92,
-      "action": {
-        "raw": "évaluer",
-        "normalized": "evaluate"
-      },
-      "object": {
-        "type": "system functionality",
-        "category": "assessment"
-      },
-      "domain": {
-        "primary": "software engineering",
-        "secondary": "JSONFIRST protocol"
-      },
-      "constraints": {}
-    },
-    {
-      "jdon_id": "jdon_002",
-      "confidence": 0.88,
-      "action": {
-        "raw": "vérifier",
-        "normalized": "verify"
-      },
-      "object": {
-        "type": "functionality",
-        "category": "testing"
-      },
-      "domain": {
-        "primary": "software engineering",
-        "secondary": "protocol validation"
-      },
-      "constraints": {}
-    },
-    {
-      "jdon_id": "jdon_003",
       "confidence": 0.85,
       "action": {
-        "raw": "pousser",
-        "normalized": "push"
+        "raw": "donne",
+        "normalized": "give"
       },
       "object": {
-        "type": "intention",
-        "category": "data operation"
+        "type": "unspecified",
+        "category": "generic"
       },
       "domain": {
-        "primary": "version control",
-        "secondary": "GitHub"
+        "primary": "general",
+        "secondary": null
       },
       "constraints": {
-        "target_platform": "GitHub",
-        "scope": "any account",
-        "operation_type": "push"
+        "recipient": "me",
+        "target": "it"
       }
     }
   ],
   "tokens": {
     "raw": [
-      "verdict",
-      "fonctionne",
-      "intention",
-      "pousser",
-      "compte",
-      "github"
+      "donne",
+      "moi",
+      "ça"
     ],
     "normalized": {
-      "verdit": "verdict",
-      "etre pousser": "être poussée",
-      "n'imorte": "n'importe",
-      "github": "GitHub"
+      "donne": "give",
+      "moi": "me",
+      "ça": "it"
     }
   },
   "execution": {
