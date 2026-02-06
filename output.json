@@ -3,53 +3,114 @@
   "version": "3.0",
   "engine": "JSONFIRST",
   "input": {
-    "raw_text": "Les histoires d'Afrique",
-    "cleaned_text": "Les histoires d'Afrique",
+    "raw_text": "Quel est ton verdit ? cela fonctionne correctement ? est ce que une intention peut etre pousser sur n'imorte quel compte github?",
+    "cleaned_text": "Quel est ton verdict ? Cela fonctionne correctement ? Est-ce qu'une intention peut être poussée sur n'importe quel compte GitHub ?",
     "language": "fr",
     "autocorrect": {
-      "enabled": false,
-      "confidence": 1,
-      "corrections": []
+      "enabled": true,
+      "confidence": 0.94,
+      "corrections": [
+        {
+          "from": "verdit",
+          "to": "verdict",
+          "type": "spelling"
+        },
+        {
+          "from": "etre pousser",
+          "to": "être poussée",
+          "type": "grammar"
+        },
+        {
+          "from": "n'imorte",
+          "to": "n'importe",
+          "type": "spelling"
+        },
+        {
+          "from": "github",
+          "to": "GitHub",
+          "type": "punctuation"
+        }
+      ]
     }
   },
   "jdons": [
     {
       "jdon_id": "jdon_001",
-      "confidence": 0.85,
+      "confidence": 0.92,
       "action": {
-        "raw": "explorer",
-        "normalized": "explore"
+        "raw": "évaluer",
+        "normalized": "evaluate"
       },
       "object": {
-        "type": "stories",
-        "category": "cultural_content"
+        "type": "system functionality",
+        "category": "assessment"
       },
       "domain": {
-        "primary": "culture",
-        "secondary": "African_heritage"
+        "primary": "software engineering",
+        "secondary": "JSONFIRST protocol"
+      },
+      "constraints": {}
+    },
+    {
+      "jdon_id": "jdon_002",
+      "confidence": 0.88,
+      "action": {
+        "raw": "vérifier",
+        "normalized": "verify"
+      },
+      "object": {
+        "type": "functionality",
+        "category": "testing"
+      },
+      "domain": {
+        "primary": "software engineering",
+        "secondary": "protocol validation"
+      },
+      "constraints": {}
+    },
+    {
+      "jdon_id": "jdon_003",
+      "confidence": 0.85,
+      "action": {
+        "raw": "pousser",
+        "normalized": "push"
+      },
+      "object": {
+        "type": "intention",
+        "category": "data operation"
+      },
+      "domain": {
+        "primary": "version control",
+        "secondary": "GitHub"
       },
       "constraints": {
-        "geographic_scope": "Africa",
-        "content_type": "narratives",
-        "subject_matter": "African_stories"
+        "target_platform": "GitHub",
+        "scope": "any account",
+        "operation_type": "push"
       }
     }
   ],
   "tokens": {
     "raw": [
-      "histoires",
-      "Afrique"
+      "verdict",
+      "fonctionne",
+      "intention",
+      "pousser",
+      "compte",
+      "github"
     ],
     "normalized": {
-      "histoires": "stories",
-      "Afrique": "Africa"
+      "verdit": "verdict",
+      "etre pousser": "être poussée",
+      "n'imorte": "n'importe",
+      "github": "GitHub"
     }
   },
   "execution": {
     "parsable": true,
     "executable": false,
-    "mode": "informational",
-    "on_success": "content_retrieval",
+    "mode": "sequential",
+    "on_success": "next_agent",
     "on_error": "jdon_validator"
   },
   "output": {
