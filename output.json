@@ -3,69 +3,45 @@
   "version": "3.0",
   "engine": "JSONFIRST",
   "input": {
-    "raw_text": "dobne moi ca",
-    "cleaned_text": "donne-moi ça",
-    "language": "fr",
+    "raw_text": "dcsv",
+    "cleaned_text": "dcsv",
+    "language": "unknown",
     "autocorrect": {
-      "enabled": true,
-      "confidence": 0.95,
-      "corrections": [
-        {
-          "from": "dobne",
-          "to": "donne",
-          "type": "typo"
-        },
-        {
-          "from": "ca",
-          "to": "ça",
-          "type": "spelling"
-        }
-      ]
+      "enabled": false,
+      "confidence": 0,
+      "corrections": []
     }
   },
-  "jdons": [
-    {
-      "jdon_id": "jdon_001",
-      "confidence": 0.85,
-      "action": {
-        "raw": "donne",
-        "normalized": "give"
-      },
-      "object": {
-        "type": "unspecified",
-        "category": "generic"
-      },
-      "domain": {
-        "primary": "general",
-        "secondary": null
-      },
-      "constraints": {
-        "recipient": "me",
-        "target": "it"
-      }
-    }
-  ],
+  "jdons": [],
   "tokens": {
     "raw": [
-      "donne",
-      "moi",
-      "ça"
+      "dcsv"
     ],
-    "normalized": {
-      "donne": "give",
-      "moi": "me",
-      "ça": "it"
-    }
+    "normalized": {}
   },
   "execution": {
-    "parsable": true,
+    "parsable": false,
     "executable": false,
     "mode": "sequential",
     "on_success": "next_agent",
-    "on_error": "jdon_validator"
+    "on_error": "jdon_validator",
+    "state": "VALIDATED",
+    "audit_hash": "287d2d84c3b0ada1"
   },
   "output": {
     "format": "json",
-    "emit_events": true
+    "emit_events": false
+  },
+  "execution_mode": {
+    "tool": "emergent",
+    "mode": "ANTI_CREDIT_WASTE",
+    "label": "Anti-gaspillage de crédits",
+    "enforced": true,
+    "rules_applied": {
+      "allow_llm_calls": false,
+      "dry_run_default": true,
+      "reject_ambiguous_requests": true,
+      "max_output_tokens": 300
+    }
   }
 }
