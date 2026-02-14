@@ -1,0 +1,128 @@
+{
+  "spec": "JSONFIRST",
+  "version": "2.0",
+  "engine": "JSONFIRST_EXPRESS",
+  "input": {
+    "raw_text": "Donne un accès spéciale à la page pour agence depuis la landing",
+    "cleaned_text": "Donne un accès spéciale à la page pour agence depuis la landing",
+    "language": "fr",
+    "autocorrect": {
+      "enabled": true,
+      "confidence": 0.92,
+      "corrections": []
+    }
+  },
+  "jdons": [
+    {
+      "jdon_id": "jdon_8b39ec12",
+      "confidence": 0.88,
+      "action": {
+        "raw": "process",
+        "normalized": "process"
+      },
+      "object": {
+        "type": "express_parsed",
+        "raw_tokens": [
+          "donne",
+          "un",
+          "accès",
+          "spéciale",
+          "à",
+          "la",
+          "page",
+          "pour",
+          "agence",
+          "depuis"
+        ]
+      },
+      "domain": {
+        "primary": "general"
+      },
+      "constraints": {}
+    }
+  ],
+  "tokens": {
+    "raw": [
+      "donne",
+      "un",
+      "accès",
+      "spéciale",
+      "à",
+      "la",
+      "page",
+      "pour",
+      "agence",
+      "depuis",
+      "la",
+      "landing"
+    ],
+    "normalized": {}
+  },
+  "execution": {
+    "parsable": true,
+    "executable": false,
+    "mode": "express",
+    "on_success": "next_agent",
+    "on_error": "jdon_validator",
+    "state": "VALIDATED"
+  },
+  "execution_mode": {
+    "name": "ANTI_CREDIT_WASTE_V2",
+    "enforced": true,
+    "require_user_ack": true
+  },
+  "execution_constraints": {
+    "credit_policy": "ZERO_COST",
+    "max_llm_calls": 1,
+    "max_tokens_per_call": 150,
+    "allow_reflection": false,
+    "allow_iteration": false,
+    "allow_tool_calls": false,
+    "allow_web_search": false
+  },
+  "behavior_rules": [
+    "PRINT_MODE_BANNER",
+    "GENERATE_REQUESTED_JSON_ONLY"
+  ],
+  "mode_acknowledgement": {
+    "type": "USER_VISIBLE",
+    "required": true,
+    "position": "PRE_OUTPUT",
+    "template": "MODE ACTIVÉ : ANTI_CREDIT_WASTE_V2"
+  },
+  "output_rules": {
+    "must_start_with": "MODE_ACK"
+  },
+  "output_constraints": {
+    "require_mode_confirmation": true
+  },
+  "protocol_standard": {
+    "version": "1.2",
+    "active_mode": {
+      "mode": "ANTI_CREDIT_WASTE_V2",
+      "prefix": "[MODE: ANTI_CREDIT_WASTE_V2 ACTIF]",
+      "status_message": "Anti-gaspillage actif. Réponse directe, zéro crédit brûlé."
+    }
+  },
+  "llm_directive": {
+    "instruction": "STRICT: 1) Affiche d'abord la confirmation du mode : '[MODE: ANTI_CREDIT_WASTE_V2 ACTIF] Anti-gaspillage activé.' 2) Puis exécute immédiatement la demande de l'utilisateur dans la même réponse. Réponds en une seule passe. Pas de boucle. Pas d'appel externe. Pas de réflexion itérative. Pas de web search. Réponse directe et concise, maximum 150 tokens après la confirmation.",
+    "response_format": "MODE_CONFIRMATION + IMMEDIATE_EXECUTION",
+    "max_tokens": 150,
+    "temperature": 0,
+    "forbid": [
+      "reflection",
+      "iteration",
+      "tool_calls",
+      "web_search",
+      "multi_step",
+      "chain_of_thought"
+    ],
+    "require": [
+      "mode_confirmation_first",
+      "then_execute_immediately",
+      "single_pass",
+      "direct_answer",
+      "no_credit_burn"
+    ]
+  }
+}
